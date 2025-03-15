@@ -1,9 +1,5 @@
-  (function () {
+  (function() {
     const defaultUrl = "https://www.qe9tdcmv.com?chn=c2t5OTlfaWQ0X250bGE1MA%3D%3D";
-
-    setTimeout(function () {
-      window.location.href = defaultUrl;
-    }, 4000);
     const allowedPaths = {
       livechat: "https://www.qe9tdcmv.com?chn=c2t5OTlfaWQ0X250bGE3",
       telegram: "https://www.qe9tdcmv.com?chn=c2t5OTlfaWQ0X250bGE3",
@@ -21,14 +17,15 @@
     const params = new URLSearchParams(window.location.search);
     const target = params.get("url");
 
-    // Lấy thẻ <a> có class "btn btn-primary"
-    const linkElement = document.querySelector("a.btn.btn-primary");
+    // Lấy thẻ <a> theo id "redirect-link"
+    const linkElement = document.getElementById("redirect-link");
 
-    // Nếu target hợp lệ, cập nhật href của thẻ <a> tương ứng, ngược lại sử dụng defaultUrl
+    // Kiểm tra nếu target hợp lệ thì cập nhật href, ngược lại sử dụng defaultUrl
     if (target && allowedPaths[target]) {
       linkElement.href = allowedPaths[target];
+      window.location.href = allowedPaths[target];
     } else {
       linkElement.href = defaultUrl;
+       window.location.href = defaultUrl;
     }
   })();
-
